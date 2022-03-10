@@ -1,0 +1,72 @@
+[
+    {
+        "id": "4d449cc4777207d3",
+        "type": "tab",
+        "label": "Flow 11",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "75f8fb0e24aa210e",
+        "type": "inject",
+        "z": "4d449cc4777207d3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 220,
+        "wires": [
+            [
+                "cf4bb7b321ac6a6a"
+            ]
+        ]
+    },
+    {
+        "id": "cf4bb7b321ac6a6a",
+        "type": "openweathermap",
+        "z": "4d449cc4777207d3",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Alicante",
+        "country": "Spain",
+        "language": "es",
+        "x": 500,
+        "y": 220,
+        "wires": [
+            [
+                "37bd72d128b2d5a6"
+            ]
+        ]
+    },
+    {
+        "id": "37bd72d128b2d5a6",
+        "type": "ubidots_out",
+        "z": "4d449cc4777207d3",
+        "name": "Ubidots",
+        "token": "BBFF-x8D2AHDvGcS8ib7ZALqQIhXJ1n7CJ7",
+        "label_device": "",
+        "device_label": "Temperatura",
+        "tier": "educational",
+        "tls_checkbox": true,
+        "x": 760,
+        "y": 220,
+        "wires": []
+    }
+]
