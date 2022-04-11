@@ -1,0 +1,236 @@
+[
+    {
+        "id": "dde46bf8563830f0",
+        "type": "tab",
+        "label": "Flow 6",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "08b7cfa102b5fdc7",
+        "type": "mqtt in",
+        "z": "dde46bf8563830f0",
+        "name": "",
+        "topic": "/clase/humedad",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7df8d4686d0716b3",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "cd2ae0ed9e55bdf5"
+            ]
+        ]
+    },
+    {
+        "id": "cd2ae0ed9e55bdf5",
+        "type": "debug",
+        "z": "dde46bf8563830f0",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "56c2da928e0f4546",
+        "type": "mqtt out",
+        "z": "dde46bf8563830f0",
+        "name": "",
+        "topic": "shellies/shelly1R1/relay/0/command",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7df8d4686d0716b3",
+        "x": 630,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "e43a795d559cb784",
+        "type": "inject",
+        "z": "dde46bf8563830f0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "on",
+        "payloadType": "str",
+        "x": 120,
+        "y": 300,
+        "wires": [
+            [
+                "56c2da928e0f4546",
+                "b22cbf558d161e7d"
+            ]
+        ]
+    },
+    {
+        "id": "5a447b6341e59752",
+        "type": "mqtt in",
+        "z": "dde46bf8563830f0",
+        "name": "",
+        "topic": "/clase/temperatura",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7df8d4686d0716b3",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 710,
+        "y": 120,
+        "wires": [
+            [
+                "9e6c5584c0a5ecc4"
+            ]
+        ]
+    },
+    {
+        "id": "9e6c5584c0a5ecc4",
+        "type": "debug",
+        "z": "dde46bf8563830f0",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "b69cb548152f4cc6",
+        "type": "inject",
+        "z": "dde46bf8563830f0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "off",
+        "payloadType": "str",
+        "x": 120,
+        "y": 360,
+        "wires": [
+            [
+                "56c2da928e0f4546"
+            ]
+        ]
+    },
+    {
+        "id": "530266486b83542a",
+        "type": "mqtt in",
+        "z": "dde46bf8563830f0",
+        "name": "",
+        "topic": "shellies/shellyem1/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7df8d4686d0716b3",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 560,
+        "wires": [
+            [
+                "f41f3af56403e3c1"
+            ]
+        ]
+    },
+    {
+        "id": "f41f3af56403e3c1",
+        "type": "debug",
+        "z": "dde46bf8563830f0",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "b22cbf558d161e7d",
+        "type": "debug",
+        "z": "dde46bf8563830f0",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "7df8d4686d0716b3",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.10.144",
+        "port": "1883",
+        "clientid": "RasPi Clase",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": false,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]

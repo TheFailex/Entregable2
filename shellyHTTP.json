@@ -1,0 +1,191 @@
+[
+    {
+        "id": "f5ab894cb156aeef",
+        "type": "tab",
+        "label": "Flow 7",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ddf919a580938138",
+        "type": "inject",
+        "z": "f5ab894cb156aeef",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "ac19d9a51a8d5ca9",
+                "f5bfbbce5d01b591"
+            ]
+        ]
+    },
+    {
+        "id": "ac19d9a51a8d5ca9",
+        "type": "http request",
+        "z": "f5ab894cb156aeef",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.10.110/emeter/0",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 370,
+        "y": 160,
+        "wires": [
+            [
+                "cd64f1b53e590577"
+            ]
+        ]
+    },
+    {
+        "id": "16f7587c4c15efea",
+        "type": "ui_gauge",
+        "z": "f5ab894cb156aeef",
+        "name": "",
+        "group": "7f3b0640a6803bfd",
+        "order": 0,
+        "width": "2",
+        "height": "1",
+        "gtype": "gage",
+        "title": "Potencia",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 780,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "cd64f1b53e590577",
+        "type": "function",
+        "z": "f5ab894cb156aeef",
+        "name": "",
+        "func": "potencia = msg.payload.power\nmsg.payload = 9.22\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 160,
+        "wires": [
+            [
+                "16f7587c4c15efea"
+            ]
+        ]
+    },
+    {
+        "id": "f5bfbbce5d01b591",
+        "type": "ui_button",
+        "z": "f5ab894cb156aeef",
+        "name": "",
+        "group": "7f3b0640a6803bfd",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "192.168.10.109/relay/0?turn=toggle",
+        "payloadType": "str",
+        "topic": "url",
+        "topicType": "msg",
+        "x": 310,
+        "y": 280,
+        "wires": [
+            [
+                "738c7e8c708994c5"
+            ]
+        ]
+    },
+    {
+        "id": "738c7e8c708994c5",
+        "type": "http request",
+        "z": "f5ab894cb156aeef",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 590,
+        "y": 280,
+        "wires": [
+            [
+                "95b22a46dbac0e72"
+            ]
+        ]
+    },
+    {
+        "id": "95b22a46dbac0e72",
+        "type": "debug",
+        "z": "f5ab894cb156aeef",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "7f3b0640a6803bfd",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "7bf3424d17442d67",
+        "order": 1,
+        "disp": true,
+        "width": "3",
+        "collapse": false
+    },
+    {
+        "id": "7bf3424d17442d67",
+        "type": "ui_tab",
+        "name": "Relé",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
